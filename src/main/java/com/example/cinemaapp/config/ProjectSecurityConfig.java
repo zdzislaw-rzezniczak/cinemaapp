@@ -14,7 +14,7 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception{
         httpSecurity.csrf().ignoringAntMatchers("/register").and().authorizeRequests()
-                .mvcMatchers("/index").permitAll()
+                .mvcMatchers("/users").permitAll()
                 .mvcMatchers("/login").permitAll()
                 .mvcMatchers("/logout").permitAll()
                 .mvcMatchers("/register").permitAll().and().authorizeRequests()
