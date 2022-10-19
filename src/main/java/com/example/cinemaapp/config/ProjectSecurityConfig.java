@@ -13,11 +13,11 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception{
-        httpSecurity.authorizeRequests()
+        httpSecurity.csrf().ignoringAntMatchers("/register").and().authorizeRequests()
                 .mvcMatchers("/index").permitAll()
-                .mvcMatchers("/users/login").permitAll()
-                .mvcMatchers("/users/logout").permitAll()
-                .mvcMatchers("/register").permitAll()
+                .mvcMatchers("/login").permitAll()
+                .mvcMatchers("/logout").permitAll()
+                .mvcMatchers("/register").permitAll().and().authorizeRequests()
                 .mvcMatchers("/movies").permitAll()
                 .mvcMatchers("/save").authenticated()
                 .mvcMatchers("/update/{id}").authenticated()
